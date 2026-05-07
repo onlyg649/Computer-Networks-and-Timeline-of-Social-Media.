@@ -1,0 +1,1283 @@
+/* style.css - Global styling, theme variables, responsive layout, cards, footer, and timeline styles */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Root CSS variables for the light theme, colors, and reusable design values */
+:root {
+  --bg-body: linear-gradient(135deg, #f5f7fa 0%, #c7f0d8 100%);
+  --color-body: #2c3e50;
+  --bg-header: linear-gradient(135deg, #6b2c91 0%, #8b4bb8 50%, #7c3fa0 100%);
+  --bg-footer: linear-gradient(135deg, #4a1f5f 0%, #5a2f7f 50%, #541e6f 100%);
+  --color-nav: white;
+  --bg-nav-a: rgba(255, 255, 255, 0.15);
+  --bg-a: linear-gradient(135deg, #3aafa9 0%, #2b7a 100%);
+  --color-a: white;
+  --color-h2: #6b2c91;
+  --bg-glossary: linear-gradient(135deg, rgba(255, 255, 255, 0.99) 0%, rgba(248, 245, 252, 0.98) 100%);
+  --bg-glossary-item: linear-gradient(135deg, #ffffff 0%, #faf8fc 100%);
+  --color-dt: #6b2c91;
+  --color-dd: #666;
+  --bg-white: #ffffff;
+  --color-purple: #6b2c91;
+  --color-gray: #666;
+  --color-p: #555;
+  --border-color: rgba(139, 75, 184, 0.12);
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --footer-color: white;
+  --footer-link-color: rgba(255, 255, 255, 0.88);
+  --gradient-purple: linear-gradient(90deg, #9c27b0, #6b2c91);
+  --nav-before-bg: rgba(255, 255, 255, 0.1);
+  --nav-hover-bg: rgba(255, 255, 255, 0.25);
+  --nav-hover-border: rgba(255, 255, 255, 0.5);
+  --timeline-line: #8b4bb8;
+  --timeline-bg: white;
+  --timeline-border: #8b4bb8;
+  --timeline-shadow: rgba(0,0,0,0.3);
+  --timeline-hover-shadow: rgba(58, 175, 169, 0.2);
+  --page-card-bg: linear-gradient(135deg, #ffffff 0%, #f8f5fc 50%, #f3f0f8 100%);
+  --page-card-border: rgba(139, 75, 184, 0.15);
+  --page-card-shadow: rgba(0, 0, 0, 0.08);
+  --page-card-icon-bg: linear-gradient(135deg, #6b2c91 0%, #8b4bb8 100%);
+  --page-card-link-bg: linear-gradient(135deg, #6b2c91 0%, #8b4bb8 100%);
+  --page-card-link-hover-bg: linear-gradient(135deg, #8b4bb8 0%, #6b2c91 100%);
+  --intro-card-bg: linear-gradient(135deg, #ffffff 0%, #f8f5fc 50%, #f3f0f8 100%);
+  --intro-card-border: #9c27b0;
+  --intro-card-hover-border: #7b1fa2;
+  --about-section-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 245, 252, 0.92) 100%);
+  --about-section-border: rgba(139, 75, 184, 0.15);
+}
+
+/* Dark mode overrides set when the site is in dark theme mode */
+.dark-mode {
+  --bg-body: #000000;
+  --color-body: #ffffff;
+  --bg-header: #000000;
+  --bg-footer: #000000;
+  --color-nav: #ffffff;
+  --bg-nav-a: rgba(255, 255, 255, 0.1);
+  --bg-a: #000000;
+  --color-a: #ffffff;
+  --color-h2: #ffffff;
+  --bg-glossary: #000000;
+  --bg-glossary-item: #1a1a1a;
+  --color-dt: #ffffff;
+  --color-dd: #e0e0e0;
+  --bg-white: #000000;
+  --color-purple: #ffffff;
+  --color-gray: #e0e0e0;
+  --color-p: #e0e0e0;
+  --border-color: rgba(255, 255, 255, 0.2);
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --footer-color: #ffffff;
+  --footer-link-color: #e0e0e0;
+  --gradient-purple: linear-gradient(90deg, #ffffff, #ffffff);
+  --nav-before-bg: rgba(255, 255, 255, 0.15);
+  --nav-hover-bg: rgba(255, 255, 255, 0.2);
+  --nav-hover-border: rgba(255, 255, 255, 0.4);
+  --timeline-line: #ffffff;
+  --timeline-bg: #1a1a1a;
+  --timeline-border: #ffffff;
+  --timeline-shadow: rgba(255, 255, 255, 0.15);
+  --timeline-hover-shadow: rgba(255, 255, 255, 0.25);
+  --page-card-bg: #1a1a1a;
+  --page-card-border: rgba(255, 255, 255, 0.2);
+  --page-card-shadow: rgba(255, 255, 255, 0.1);
+  --page-card-icon-bg: #ffffff;
+  --page-card-link-bg: #ffffff;
+  --page-card-link-hover-bg: #e0e0e0;
+  --intro-card-bg: #1a1a1a;
+  --intro-card-border: #ffffff;
+  --intro-card-hover-border: #e0e0e0;
+  --about-section-bg: #1a1a1a;
+  --about-section-border: rgba(255, 255, 255, 0.2);
+}
+
+/* Styles for the dark mode toggle button, fixed on screen */
+#dark-mode-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    padding: 10px 15px;
+    background: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease, top 0.3s ease;
+}
+
+/* Adjust dark mode toggle placement when the navigation becomes sticky */
+body.nav-sticky #dark-mode-toggle {
+    top: 88px !important;
+}
+
+#dark-mode-toggle:hover {
+    background: #555;
+}
+
+.dark-mode #dark-mode-toggle {
+    background: #ffffff;
+    color: #000000;
+}
+
+.dark-mode #dark-mode-toggle:hover {
+    background: #e0e0e0;
+}
+
+/* Dark Mode Hover Styles */
+.dark-mode .glossary-item:hover dt {
+    color: #e0e0e0;
+}
+
+.dark-mode .intro-card:hover h3 {
+    color: #e0e0e0;
+}
+
+.dark-mode .intro-card h3 {
+    color: #ffffff;
+}
+
+.dark-mode .intro-card p {
+    color: #e0e0e0;
+}
+
+.dark-mode .intro-card .highlight {
+    color: #ffffff;
+}
+
+.dark-mode .page-card h3 {
+    color: #ffffff;
+}
+
+.dark-mode .page-card:hover h3 {
+    color: #e0e0e0;
+}
+
+.dark-mode .page-card p {
+    color: #e0e0e0;
+}
+
+.dark-mode .page-card .card-icon {
+    background: #ffffff;
+}
+
+.dark-mode .page-card .card-icon img {
+    filter: brightness(0) invert(0);
+}
+
+.dark-mode /* CTA button styles inside page cards */
+.card-link {
+    color: #000000;
+}
+
+.dark-mode .card-link:hover {
+    color: #000000;
+}
+
+.dark-mode .glossary-grid:hover {
+    border-color: #ffffff;
+}
+
+.dark-mode .glossary-item:hover {
+    border-color: #ffffff;
+}
+
+.dark-mode .glossary-item dd {
+    color: #e0e0e0;
+}
+
+.dark-mode .about-section /* Heading level 2 styles for section headings */
+h2 {
+    color: #ffffff;
+}
+
+.dark-mode .about-section p {
+    color: #e0e0e0;
+}
+
+.dark-mode .intro-section h2 {
+    color: #ffffff;
+}
+
+.dark-mode .intro-section p {
+    color: #e0e0e0;
+}
+
+.dark-mode body > h2 {
+    color: #ffffff;
+}
+
+.dark-mode body > h2::before {
+    background: linear-gradient(180deg, #ffffff, #ffffff);
+}
+
+.dark-mode body > h2::after {
+    background: linear-gradient(90deg, #ffffff, #ffffff);
+}
+
+.dark-mode .content h2 {
+    color: #ffffff;
+}
+
+.dark-mode .content p {
+    color: #e0e0e0;
+}
+
+.dark-mode dt {
+    color: #ffffff;
+}
+
+.dark-mode dd {
+    color: #e0e0e0;
+}
+
+.dark-mode #dark-mode-toggle:hover {
+    background: #e0e0e0;
+}
+
+/* Global HTML element styles for smooth scrolling and overflow control */
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Body styles define base typography, background, animation, and color transitions */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-body);
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    color: var(--color-body);
+    animation: fadeIn 0.4s ease-in;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+body > *:not(.site-header):not(.site-footer) {
+    margin: 30px auto 0;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+    transition: margin-top 0.3s ease;
+}
+
+body.nav-sticky > *:not(.site-header):not(.site-footer) {
+    margin: 80px auto 0;
+}
+
+/* Header bar styles including background, shadows, and positioning */
+.site-header {
+    background: var(--bg-header);
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 8px 32px rgba(139, 75, 184, 0.3), 0 0 60px rgba(139, 75, 184, 0.1);
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    animation: slideDown 0.35s ease-out;
+    position: relative;
+}
+
+.site-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Footer container styling with background, padding, and text alignment */
+.site-footer {
+    position: relative;
+    background: var(--bg-footer);
+    width: 100%;
+    padding: 60px 25px 40px;
+    margin: 0;
+    color: var(--footer-color);
+    text-align: center;
+    box-shadow: 0 -12px 40px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    margin-top: 60px;
+    animation: slideUp 0.35s ease-out 0.05s both;
+    overflow: hidden;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+/* Decorative footer top line accent */
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.22);
+    border-radius: 999px;
+}
+
+.site-footer .footer-content {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.site-footer .footer-brand {
+    display: grid;
+    gap: 14px;
+    text-align: center;
+}
+
+.site-footer h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.75;
+    letter-spacing: 0.25px;
+    font-weight: 400;
+    opacity: 0.92;
+}
+
+.site-footer .footer-links {
+    display: none;
+}
+
+.site-footer .footer-column h4 {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.site-footer .footer-column a,
+.site-footer .footer-column p {
+    display: block;
+    color: var(--footer-link-color);
+    text-decoration: none;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    transition: color 0.5s ease;
+}
+
+.site-footer .footer-column a:hover {
+    color: #ffffff;
+}
+
+.site-footer .footer-bottom {
+    margin: 40px auto 0;
+    max-width: 1100px;
+    padding: 20px 15px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.footer-note {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.88rem;
+    margin: 0;
+}
+
+@media screen and (max-width: 860px) {
+    .site-footer .footer-content {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .site-footer {
+        padding: 50px 20px 30px;
+    }
+
+    .site-footer .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Animation used for subtle entrance effects on navigation links */
+@keyframes slideFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Navigation link styling for menu items */
+nav /* Default link/button style used across page cards and buttons */
+a {
+    animation: slideFadeIn 0.8s ease-out forwards;
+    text-decoration: none;
+    padding: 12px 26px;
+    border: none;
+    border-radius: 10px;
+    background: var(--bg-nav-a);
+    color: var(--color-nav);
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    margin: 0;
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+    letter-spacing: 0.4px;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--nav-before-bg);
+    transition: left 0.4s ease;
+    z-index: -1;
+}
+
+nav a:hover::before {
+    left: 0;
+}
+
+nav a:hover {
+    background: var(--nav-hover-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2), 0 0 20px rgba(255, 255, 255, 0.15);
+    border-color: var(--nav-hover-border);
+}
+
+a {
+    text-decoration: none;
+    padding: 15px 25px;
+    border: none;
+    border-radius: 25px;
+    background: var(--bg-a);
+    color: var(--color-a);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin: 10px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+}
+
+/* Navigation bar container styling and layout */
+nav {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.04) 100%);
+    padding: 22px 25px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    max-width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    transition: all 0.3s ease;
+}
+nav a.active {
+     background: var(--bg-header);
+}
+
+nav.sticky-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: var(--bg-header);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+}
+
+
+
+a:not(nav a):hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(39, 174, 96, 0.6);
+}
+
+/* Heading level 1 styles for main page titles */
+h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    color: var(--color-h2);
+    letter-spacing: -0.4px;
+    transition: color 0.5s ease;
+}
+
+h3 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+
+/* Layout for glossary item grid sections */
+.glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 28px;
+    padding: 50px 30px;
+    justify-items: start;
+    background: var(--bg-glossary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    margin: 0 auto 50px;
+    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.5), 0 8px 32px var(--shadow-color);
+    animation: slideUp 0.5s ease-out 0.15s both;
+    transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+}
+.glossary-grid:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(139, 75, 184, 0.22);
+    border-color: var(--color-purple);
+    background: var(--bg-glossary);
+}
+
+.dark-mode .glossary-grid:hover {
+    box-shadow: 0 16px 40px rgba(255, 255, 255, 0.2);
+}
+
+/* Individual glossary card styling and hover effects */
+.glossary-item {
+    width: 100%;
+    border: 1px solid rgba(139, 75, 184, 0.15);
+    border-radius: 14px;
+    background: var(--bg-glossary-item);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    cursor: pointer;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    animation: scaleIn 0.35s ease-out;
+}
+
+.dark-mode .glossary-item {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.glossary-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-purple);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 1;
+}
+
+.glossary-item:hover::before {
+    transform: scaleX(1);
+}
+
+.glossary-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 40px rgba(139, 75, 184, 0.22);
+    border-color: var(--color-purple);
+    background: var(--bg-glossary-item);
+}
+
+.dark-mode .glossary-item:hover {
+    box-shadow: 0 16px 40px rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.glossary-item dt {
+    color: var(--color-dt);
+    font-weight: 800;
+    padding: 20px 24px 10px 24px;
+    margin: 0;
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    letter-spacing: -0.2px;
+    border-bottom: 2px solid rgba(139, 75, 184, 0.08);
+    transition: all 0.3s ease;
+}
+
+.dark-mode .glossary-item dt {
+    color: #ffffff !important;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.glossary-item:hover dt {
+    color: #7b1fa2;
+}
+
+.dark-mode .glossary-item:hover dt {
+    color: #e0e0e0;
+}
+
+.glossary-item dd {
+    padding: 16px 24px 20px 24px;
+    margin: 0;
+    color: var(--color-dd);
+    display: block;
+    line-height: 1.8;
+    font-size: 0.96em;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.dark-mode .glossary-item dd {
+    color: #ffffff;
+}
+
+dt {
+    color: var(--color-dt);
+    font-weight: 800;
+    padding: 15px 20px 5px 20px;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: block;
+    font-size: 1.08em;
+    letter-spacing: -0.2px;
+}
+
+.dark-mode dt {
+    color: #ffffff;
+}
+
+dd {
+    padding: 8px 20px 15px 20px;
+    margin: 0;
+    color: #666;
+    display: block;
+    line-height: 1.8;
+    font-weight: 400;
+    letter-spacing: 0.2px;
+}
+
+.dark-mode dd {
+    color: #ffffff;
+}
+
+/* Grid layout for introductory concept cards */
+.intro-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    padding: 50px 0;
+    margin-bottom: 40px;
+    animation: slideUp 0.5s ease-out 0.1s both;
+}
+
+/* Styling for each intro card with hover effects and gradient accents */
+.intro-card {
+    background: var(--intro-card-bg);
+    border-left: 6px solid var(--intro-card-border);
+    border-radius: 16px;
+    padding: 35px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    animation: scaleIn 0.35s ease-out;
+}
+
+.intro-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.15) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.dark-mode .intro-card::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+}
+
+.intro-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(156, 39, 176, 0.1) 0%, transparent 70%);
+    opacity: 0;
+    transition: all 0.6s ease;
+    z-index: 0;
+}
+
+.dark-mode .intro-card::after {
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+}
+
+.intro-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(156, 39, 176, 0.2), 0 0 40px rgba(156, 39, 176, 0.1);
+    border-left-color: #7b1fa2;
+}
+
+.dark-mode .intro-card:hover {
+    box-shadow: 0 20px 40px rgba(255, 255, 255, 0.2), 0 0 40px rgba(255, 255, 255, 0.1);
+    border-left-color: #e0e0e0;
+}
+
+.intro-card:hover::before {
+    opacity: 1;
+}
+
+.intro-card:hover::after {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.intro-card h3 {
+    color: #9c27b0;
+    font-size: 1.5em;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.3px;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.intro-card:hover h3 {
+    color: #7b1fa2;
+}
+
+.dark-mode .intro-card h3 {
+    color: #ffffff;
+}
+
+.dark-mode .intro-card:hover h3 {
+    color: #e0e0e0;
+}
+
+.intro-card p {
+    color: #555;
+    line-height: 1.85;
+    margin: 0;
+    font-size: 0.98em;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.2px;
+}
+
+.intro-card .highlight {
+    color: #9c27b0;
+    font-weight: 600;
+}
+
+.site-branding {
+    text-align: center;
+    padding: 40px 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: slideDown 0.4s ease-out;
+}
+
+.page-image {
+    max-width: 900px;
+    margin: 0 auto 20px;
+    padding: 0 20px;
+}
+
+.page-image img {
+    width: 100%;
+    display: block;
+    border-radius: 26px;
+    box-shadow: 0 18px 40px rgba(107, 44, 145, 0.12);
+    border: 1px solid rgba(139, 75, 184, 0.14);
+}
+
+.dark-mode .page-image img {
+    box-shadow: 0 18px 40px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Styles for page icon image containers */
+.page-icon {
+    max-width: 260px;
+    margin: 18px auto 32px;
+    padding: 0 20px;
+}
+
+.page-icon img {
+    width: 100%;
+    display: block;
+    border-radius: 22px;
+    box-shadow: 0 14px 30px rgba(107, 44, 145, 0.1);
+    border: 1px solid rgba(139, 75, 184, 0.12);
+    background: white;
+}
+
+.dark-mode .page-icon img {
+    box-shadow: 0 14px 30px rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #1a1a1a;
+}
+
+.site-branding h1 {
+    color: white;
+    font-size: 2.8em;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+}
+
+.site-branding p {
+    margin: 16px auto 0;
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 1.05rem;
+    max-width: 800px;
+    font-weight: 300;
+    letter-spacing: 0.6px;
+    line-height: 1.6;
+}
+
+body > h2,
+body > .glossary-grid,
+body > .intro-cards,
+body > p:first-of-type,
+body > /* Timeline container styles for the history page */
+.timeline {
+    margin: 0 auto !important;
+    max-width: 1200px;
+    box-sizing: border-box;
+}
+
+body > h2 {
+    text-align: center;
+    font-size: 2.4rem;
+    padding: 60px 25px 35px;
+    color: #6b2c91;
+    font-weight: 800;
+    margin-top: 70px !important;
+    letter-spacing: -0.6px;
+    animation: slideUp 0.4s ease-out 0.05s both;
+    position: relative;
+}
+
+.dark-mode body > h2 {
+    color: #ffffff;
+}
+
+body > h2::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 30px;
+    background: linear-gradient(180deg, #6b2c91, #8b4bb8);
+    border-radius: 3px;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+body > h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: linear-gradient(90deg, #6b2c91, #8b4bb8);
+    border-radius: 2px;
+    margin: 16px auto 0;
+}
+
+body > .glossary-grid {
+    margin-bottom: 40px !important;
+}   
+
+p {
+    max-width: 800px;
+    margin: 0 auto 30px;
+    line-height: 1.8;
+    font-size: 15px;
+    color: var(--color-p);
+    transition: color 0.5s ease;
+}
+
+
+.intro-section {
+    max-width: 900px;
+    margin: 60px auto 50px;
+    padding: 0 25px;
+    text-align: center;
+    animation: slideUp 0.5s ease-out 0.1s both;
+}
+
+.intro-section h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #6b2c91;
+    transition: color 0.5s ease;
+}
+
+.dark-mode .intro-section h2 {
+    color: #ffffff;
+}
+
+.intro-section p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--color-p);
+    margin-bottom: 18px;
+    max-width: 100%;
+    transition: color 0.5s ease;
+}
+
+.pages-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    padding: 80px 25px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: slideUp 0.5s ease-out 0.2s both;
+}
+
+.pages-grid h2 {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 0 0 30px 0;
+    color: #6b2c91;
+}
+
+.dark-mode .pages-grid h2 {
+    color: #ffffff;
+}
+
+/* Card styles for module links on the home page */
+.page-card {
+    background: var(--page-card-bg);
+    border: 1px solid var(--page-card-border);
+    border-radius: 20px;
+    padding: 40px 30px;
+    box-shadow: 0 8px 24px var(--page-card-shadow), 0 0 1px rgba(0, 0, 0, 0.05);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: scaleIn 0.35s ease-out;
+}
+
+.page-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(156, 39, 176, 0.1) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+}
+
+.dark-mode .page-card::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, transparent 100%);
+}
+
+.page-card:hover {
+    transform: translateY(-14px);
+    box-shadow: 0 24px 48px rgba(156, 39, 176, 0.22);
+    border-color: #8b4bb8;
+}
+
+.dark-mode .page-card:hover {
+    box-shadow: 0 24px 48px rgba(255, 255, 255, 0.22);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.page-card:hover::before {
+    opacity: 1;
+}
+
+.card-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 24px;
+    background: var(--page-card-icon-bg);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(107, 44, 145, 0.2);
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.dark-mode .card-icon {
+    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.15);
+}
+
+.page-card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 12px 32px rgba(107, 44, 145, 0.35);
+}
+
+.dark-mode .page-card:hover .card-icon {
+    box-shadow: 0 12px 32px rgba(255, 255, 255, 0.25);
+}
+
+.card-icon img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.page-card h3 {
+    color: #6b2c91;
+    font-size: 1.6em;
+    font-weight: 700;
+    margin: 0 0 16px 0;
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.3px;
+    position: relative;
+    z-index: 1;
+    transition: color 0.3s ease;
+}
+
+.page-card:hover h3 {
+    color: #8b4bb8;
+}
+
+.dark-mode .page-card h3 {
+    color: #ffffff;
+}
+
+.dark-mode .page-card:hover h3 {
+    color: #e0e0e0;
+}
+
+.page-card p {
+    color: #666;
+    line-height: 1.8;
+    margin: 0 0 24px 0;
+    font-size: 0.98em;
+    font-weight: 400;
+    position: relative;
+    z-index: 1;
+    letter-spacing: 0.2px;
+    flex-grow: 1;
+    max-width: 100%;
+}
+
+.card-link {
+    background: var(--page-card-link-bg);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: none;
+    box-shadow: 0 6px 16px rgba(107, 44, 145, 0.25);
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.dark-mode .card-link {
+    box-shadow: 0 6px 16px rgba(255, 255, 255, 0.15);
+}
+
+.card-link:hover {
+    background: var(--page-card-link-hover-bg);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(107, 44, 145, 0.4);
+}
+
+.dark-mode .card-link:hover {
+    box-shadow: 0 12px 28px rgba(255, 255, 255, 0.25);
+}
+
+/* About section styling box with background and border */
+.about-section {
+    max-width: 900px;
+    margin: 80px auto 60px;
+    padding: 60px 25px;
+    background: var(--about-section-bg);
+    border: 1px solid var(--about-section-border);
+    border-radius: 24px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    animation: slideUp 0.5s ease-out 0.3s both;
+    text-align: center;
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.about-section h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #6b2c91;
+    transition: color 0.5s ease;
+}
+
+.dark-mode .about-section h2 {
+    color: #ffffff;
+}
+
+.about-section p {
+    font-size: 1.02rem;
+    line-height: 1.9;
+    color: #666;
+    margin-bottom: 20px;
+    max-width: 100%;
+    transition: color 0.5s ease;
+}
+
+/* Timeline Styles */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: var(--timeline-line);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+}
+
+.container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: var(--timeline-bg);
+    border: 4px solid var(--timeline-line);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+    transition: background-color 0.3s ease;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    left: 50%;
+}
+
+.right::after {
+    left: -16px;
+}
+
+.content {
+    padding: 20px 30px;
+    background-color: var(--timeline-bg);
+    position: relative;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px var(--timeline-shadow);
+    transition: all 0.3s ease-in-out;
+    border: 1px solid var(--timeline-border);
+}
+
+.content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px var(--timeline-hover-shadow);
+    border-color: var(--timeline-line);
+}
+
+.container:hover::after {
+    background-color: var(--timeline-line);
+}
+
+.content h2 {
+    margin: 0 0 10px;
+    color: var(--timeline-line);
+    font-size: 1.4rem;
+    transition: color 0.5s ease;
+}
+
+.content p {
+    margin: 0;
+    color: var(--color-dd);
+    transition: color 0.5s ease;
+}
+
+/* Responsive adjustments for mobile screen sizes */
+@media screen and (max-width: 600px) {
+    .timeline::after {
+        left: 31px;
+    }
+    .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    .container::after {
+        left: 15px;
+    }
+    .right {
+        left: 0%;
+    }
+}

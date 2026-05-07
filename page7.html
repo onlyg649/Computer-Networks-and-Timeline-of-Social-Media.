@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- FILE COMMENTS: page7.html - Timeline page showing major Internet and social media milestones in a vertical timeline layout. -->
+<head>
+    <!-- Page metadata and stylesheet link for page layout and theme -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAGE 7: INTERNET &amp; SOCIAL MEDIA Time Line</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <style>
+        * { box-sizing: border-box; }
+    </style>
+</head>
+<body>
+    <!-- Site header includes branding, navigation, and a theme toggle button -->
+    <header class="site-header">
+        <div class="site-branding">
+            <h1>PAGE 7: INTERNET &amp; SOCIAL MEDIA Time Line</h1>
+            <p class="subtitle">A visual history of the Internet and social media milestones.</p>
+        </div>
+        <div class="page-image">
+            
+        </div>
+                <!-- Navigation menu for moving across topic pages -->
+        <nav>
+            <a href="index.html">HOME</a>
+            <a href="page1.html">INTRO & CONCEPTS</a>
+            <a href="page2.html">HARDWARE</a>
+            <a href="page3.html">TRANSMISSION</a>
+            <a href="page4.html">TOPOLOGIES</a>
+            <a href="page5.html">DATA & PROTOCOLS</a>
+            <a href="page6.html">SECURITY</a>
+            <a href="page7.html" class="active">TIMELINE</a>
+        </nav>
+
+                <!-- Button toggles dark mode and stores preference in localStorage -->
+        <button id="dark-mode-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 1001; padding: 10px; background: #333; color: white; border: none; border-radius: 5px; cursor: pointer;">Dark Mode</button>
+    </header>
+
+        <!-- JavaScript handles dark mode, sticky navigation, and page load behavior -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            const header = document.querySelector('.site-header');
+            const body = document.body;
+            const headerHeight = header.offsetHeight;
+            
+            if (window.pageYOffset > headerHeight - 80) {
+                nav.classList.add('sticky-nav');
+                body.classList.add('nav-sticky');
+            } else {
+                nav.classList.remove('sticky-nav');
+                body.classList.remove('nav-sticky');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const isDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (isDarkMode) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('dark-mode-toggle').textContent = 'Light Mode';
+            }
+        });
+
+        document.getElementById('dark-mode-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+            const button = document.getElementById('dark-mode-toggle');
+            const isDark = document.body.classList.contains('dark-mode');
+            button.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            localStorage.setItem('darkMode', isDark);
+        });
+    </script>
+        <!-- Icon or illustration representing the current page theme -->
+    <div class="page-icon">
+        <img src="images/page7-icon.svg" alt="Timeline icon">
+    </div>
+        <!-- Timeline layout for chronological events and milestones -->
+    <div class="timeline">
+        <div class="container left">
+            <div class="content">
+                <h2>1969</h2>
+                <p>The first version of the Internet, ARPANET, is developed in the United States, allowing computers to communicate over long distances.</p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h2>1983</h2>
+                <p>The Internet adopts TCP/IP, enabling different networks to connect into one global system.</p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h2>1991</h2>
+                <p>The World Wide Web is created by Tim Berners-Lee, making the Internet accessible to the public.</p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h2>1997</h2>
+                <p>SixDegrees launches, widely considered the first recognizable social media platform.</p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h2>2003</h2>
+                <p>Platforms like MySpace and LinkedIn are created, expanding online social interaction.</p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h2>2004</h2>
+                <p>Facebook is launched by Mark Zuckerberg as a university networking site.</p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h2>2005</h2>
+                <p>YouTube is created, allowing users to upload and share videos globally.</p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h2>2006</h2>
+                <p>Twitter launches, introducing short-form messaging (tweets).</p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h2>2010</h2>
+                <p>Instagram launches, focusing on photo and video sharing.</p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h2>2011</h2>
+                <p>Snapchat is released, introducing disappearing messages.</p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h2>2016–17</h2>
+                <p>TikTok (originally Douyin in China) launches internationally in 2017, becoming highly popular among young users.</p>
+            </div>
+        </div>
+        <div class="container right">
+            <div class="content">
+                <h2>2021</h2>
+                <p>The Australian government introduces the <strong>Online Safety Act 2021</strong>, strengthening regulations on harmful online content.</p>
+            </div>
+        </div>
+        <div class="container left">
+            <div class="content">
+                <h2>2023–2024</h2>
+                <p>Australia increases discussions and proposals to restrict or regulate social media use for children under certain ages due to safety concerns.</p>
+            </div>
+        </div>
+    </div>
+      
+            <!-- Footer section contains site credits, copyright, and additional links -->
+        <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>Computer Networks & Social Media</h3>
+                <p>This site combines clear explanations of computer networking, communication protocols, security, and the social media timeline into one student-friendly learning resource.</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Quick links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="page1.html">Network Basics</a>
+                    <a href="page2.html">Transmission</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Explore</h4>
+                    <a href="page3.html">Security</a>
+                    <a href="page4.html">Hardware</a>
+                    <a href="page7.html">Timeline</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <p>Created by Arshith Varanasi and Rishi Khakurel.</p>
+                    <p><a href="mailto:info@example.com">info@example.com</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-note">&copy; 2026 Computer Networks & Social Media Educational Resource. All rights reserved.</p>
+            <p class="footer-note">Designed for easy classroom review and student learning.</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
